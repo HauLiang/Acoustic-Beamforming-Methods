@@ -1,2 +1,14 @@
 # Acoustic-Beamforming-Methods
-Several classic acoustic imaging methods, such as DAS, DAMAS, CLEAN-SC, and FFT-NNLS...
+A simple demo for acoustic imaging, including the following methods:
+
+* DAS 
+* DAMAS 
+* CLEAN-SC 
+* FFT-NNLS 
+* ...
+
+If you want to know more about acoustic imaging, please refer to this paper:
+
+*
+
+@ All rights are reserved by the authors
