@@ -13,7 +13,7 @@ A simple demo for acoustic imaging, including the following methods:
 
 If you want to know more about acoustic imaging, please refer to this paper:
 
-* A review of acoustic imaging methods
+* A review of acoustic imaging methods:
 > [Merino-Martínez, Roberto and Sijtsma, Pieter and Snellen, Mirjam and Ahlefeldt, Thomas and Antoni, Jerome and Bahr, Christopher J and Blacodon, Daniel and Ernst, Daniel and Finez, Arthur and Funke, Stefan and others, "A review of acoustic imaging methods using phased microphone arrays", *CEAS Aeronautical Journal*, 2019.](https://link.springer.com/article/10.1007/s13272-019-00383-4 "https://link.springer.com/article/10.1007/s13272-019-00383-4")
 
 @ All rights are reserved by the authors.
