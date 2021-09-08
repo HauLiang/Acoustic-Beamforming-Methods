@@ -8,7 +8,7 @@ A simple demo for acoustic imaging, including the following methods:
 * CLEAN-SC: <br> 
 > [Sijtsma, Pieter, "CLEAN based on spatial source coherence", *International journal of aeroacoustics*, 2007.](https://journals.sagepub.com/doi/abs/10.1260/147547207783359459 "https://journals.sagepub.com/doi/abs/10.1260/147547207783359459")
 * FFT-NNLS: <br>
-> [Ehrenfried, Klaus and Koop, Lars, Comparison of iterative deconvolution algorithms for the mapping of acoustic sources, *AIAA journal*, 2007.](https://arc.aiaa.org/doi/abs/10.2514/1.26320?journalCode=aiaaj "https://arc.aiaa.org/doi/abs/10.2514/1.26320?journalCode=aiaaj")
+> [Ehrenfried, Klaus and Koop, Lars, "Comparison of iterative deconvolution algorithms for the mapping of acoustic sources", *AIAA journal*, 2007.](https://arc.aiaa.org/doi/abs/10.2514/1.26320?journalCode=aiaaj "https://arc.aiaa.org/doi/abs/10.2514/1.26320?journalCode=aiaaj")
 * ...
 
 If you want to know more about acoustic imaging, please refer to this paper:
