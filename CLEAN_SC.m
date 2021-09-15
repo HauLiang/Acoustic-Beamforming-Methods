@@ -13,8 +13,6 @@ function CLEAN_SC_result = CLEAN_SC(loopgain, maxIter, CSM, hn)
 %    maxIter:   the maximum allowable iterations
 %    CSM:  cross-spectrum matrix (CSM)
 %    hn:   steering vector
-%    z0:   source distance to array
-%    N:    number of grid points in each dim 
 %
 % Outputs:
 %    CLEAN_SC_result:  beamforming map, obtained by CLEAN-SC
@@ -45,10 +43,10 @@ while ( Dcurr < Dprev ) && (count < maxIter)
     [Map_max, index_max] = max(abs(Dirty_map)); 
     Map_maxCleanBeam = zeros(size(Clean_map)); Map_maxCleanBeam(index_max) = 1;
     ispositiv = real(Dirty_map(index_max)) > 0;  % Delete negative pressure maps
-    gmax = Degraded_CSM*h(:,index_max)/Map_max;
+    hmax = Degraded_CSM*h(:,index_max)/Map_max;
     
     % Update degraded CSM 
-    Cource = Map_max*(gmax)*gmax';
+    Cource = Map_max*(hmax)*hmax';
     Degraded_CSM = Degraded_CSM - loopgain*Cource;
     
     % Update dirty map 
