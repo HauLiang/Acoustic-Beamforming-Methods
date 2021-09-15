@@ -60,6 +60,7 @@ while ( Dprev > Dcurr ) && (count < maxIter)
     % Stopping criteria
     Dprev = Dcurr; Dcurr = sum(abs(Degraded_CSM(:)));
     count = count + 1;
+    
 end
 
 % Delete negative power
