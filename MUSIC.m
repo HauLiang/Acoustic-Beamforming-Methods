@@ -23,11 +23,11 @@ function MUSIC_result = MUSIC(CSM, hn, nSources)
 % Parameters setting
 [N_X, N_Y, N_mic] = size(hn);
 
-% CSM with diagonal loading
+% Diagonal reload
 CSM = CSM + trace(CSM)/(N_mic^2)*eye(N_mic, N_mic);
 CSM = CSM/N_mic;
 
-% Eigenvectors of R
+% Eigenvectors of CSM
 [Vec, Val] = eig(CSM);
 [~, Seq] = sort(max(Val));
 
