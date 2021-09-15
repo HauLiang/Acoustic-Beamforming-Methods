@@ -18,7 +18,7 @@ function CLEAN_SC_result = CLEAN_SC(loopgain, maxIter, CSM, hn)
 %    CLEAN_SC_result:  beamforming map, obtained by CLEAN-SC
 %
 % Author: Hao Liang 
-% Last modified by: 21/09/13
+% Last modified by: 21/09/15
 %
 
 % Straighten the steering vector
@@ -33,7 +33,7 @@ end
 % Scan points setting         
 N_scanpoints = N_X*N_Y;
 
-% Start CLEAN SC procedure
+% Start CLEAN-SC procedure
 Clean_map = zeros(1, N_scanpoints); Degraded_CSM = conj(CSM); Dirty_map = sum(conj(h).*(Degraded_CSM*h), 1);
 Dcurr = sum(abs(Degraded_CSM(:))); count = 0; Dprev = 1e8;
 
