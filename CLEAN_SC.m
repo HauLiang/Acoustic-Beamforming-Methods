@@ -32,11 +32,7 @@ for i = 1:N_mic
     h(i,:) = reshape(hn(:,:,i).',1,[])./N_mic;
 end
 
-% Setup scanning grid
-L = 2*z0*tand(loopgain);            
-x = [-L/2 L/2];    
-X = linspace(x(1),x(2),N);
-Y = linspace(x(1),x(2),N);
+% Scan points setting  
 N_scanpoints = N_X*N_Y;
 
 % Start CLEAN SC procedure
