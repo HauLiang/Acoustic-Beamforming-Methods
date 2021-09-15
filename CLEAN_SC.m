@@ -55,6 +55,7 @@ while ( Dcurr < Dprev ) && (count < maxIter)
     % Update clean map 
     Clean_map = Clean_map + loopgain*Map_max*Map_maxCleanBeam*ispositiv;
 
+    % Stopping criteria
     Dprev = Dcurr; Dcurr = sum(abs(Degraded_CSM(:)));
     count = count + 1;
 
