@@ -3,6 +3,7 @@
 % A simple demo for acoustic imaging, including the following methods:
 %
 % -- DAS
+% -- MUSIC
 % -- DAMAS
 % -- CLEAN-PSF
 % -- CLEAN-SC
@@ -13,7 +14,7 @@
 % -- https://github.com/Anwar-M/Acoustic-Beamforming
 %
 % Author: Hao Liang 
-% Last modified by: 21/09/06
+% Last modified by: 21/09/15
 %
 
 %% Experiment setup
@@ -31,6 +32,13 @@ source = int64([N/4 N/4]);    % x,y position of sources
 [DAS_result, PSF, hn, CSM] = DAS(N,z0,f,phi,rn,source,SNR);
 
 figure; contourf(real(DAS_result)); title('DAS')
+hold on; plot(source(:,1),source(:,2),'r*');
+
+%% MUSIC
+nSources = 1;
+MUSIC_result = MUSIC(CSM, hn, nSources);
+
+figure; contourf(real(MUSIC_result)); title('MUSIC')
 hold on; plot(source(:,1),source(:,2),'r*');
 
 %% DAMAS
