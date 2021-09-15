@@ -4,6 +4,7 @@
 %
 % -- DAS
 % -- DAMAS
+% -- CLEAN-PSF
 % -- CLEAN-SC
 % -- FFT-NNLS 
 %
@@ -39,9 +40,13 @@ DAMAS_result = DAMAS(DAS_result, hn, maxIter);
 figure; contourf(real(DAMAS_result)); title('DAMAS')
 hold on; plot(source(:,1),source(:,2),'r*')
 
+%% CLEAN-PSF
+loopgain = 0.9; maxIter = 100;
+CLEAN_SC_result = CLEAN_SC(loopgain, maxIter, CSM, hn);
+
 %% CLEAN-SC
 loopgain = 0.9; maxIter = 100;
-CLEAN_SC_result = CLEAN_SC(loopgain, maxIter, CSM, hn, z0, N);
+CLEAN_SC_result = CLEAN_SC(loopgain, maxIter, CSM, hn);
 
 figure; contourf(real(CLEAN_SC_result)); title('CLEAN-SC')
 hold on; plot(source(:,1),source(:,2),'r*')
