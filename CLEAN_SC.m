@@ -1,8 +1,8 @@
 function CLEAN_SC_result = CLEAN_SC(loopgain, maxIter, CSM, hn, z0, N)
 %
-% This code implements the DAMAS algorithm
+% This code implements the CLEAN-SC algorithm
 %
-% More information about DAMAS can be found in the paper:
+% More information about CLEAN-SC can be found in the paper:
 %    Sijtsma, Pieter, 
 %    "CLEAN based on spatial source coherence", 
 %    International journal of aeroacoustics, 2007.
@@ -20,7 +20,7 @@ function CLEAN_SC_result = CLEAN_SC(loopgain, maxIter, CSM, hn, z0, N)
 %    CLEAN_SC_result:  beamforming map, obtained by CLEAN-SC
 %
 % Author: Hao Liang 
-% Last modified by: 21/09/07
+% Last modified by: 21/09/15
 %
 
 % Straighten the steering vector
