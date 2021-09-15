@@ -54,7 +54,7 @@ while ( Dprev > Dcurr ) && (count < maxIter)
     % Update dirty map 
     Dirty_map = sum(h.*(Degraded_CSM*conj(h)), 1);
     
-    % Update clean map)
+    % Update clean map
     Clean_map = Clean_map + loopgain*Map_max*PmaxCleanBeam*ispositiv;
     
     % Stopping criteria
