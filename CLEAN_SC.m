@@ -1,4 +1,4 @@
-function CLEAN_SC_result = CLEAN_SC(loopgain, maxIter, CSM, hn, z0, N)
+function CLEAN_SC_result = CLEAN_SC(loopgain, maxIter, CSM, hn)
 %
 % This code implements the CLEAN-SC algorithm
 %
@@ -20,7 +20,7 @@ function CLEAN_SC_result = CLEAN_SC(loopgain, maxIter, CSM, hn, z0, N)
 %    CLEAN_SC_result:  beamforming map, obtained by CLEAN-SC
 %
 % Author: Hao Liang 
-% Last modified by: 21/09/15
+% Last modified by: 21/09/13
 %
 
 % Straighten the steering vector
@@ -32,33 +32,43 @@ for i = 1:N_mic
     h(i,:) = reshape(hn(:,:,i).',1,[])./N_mic;
 end
 
-% Scan points setting  
+% Scan points setting         
 N_scanpoints = N_X*N_Y;
 
-% Start CLEAN-SC procedure
+% Start CLEAN SC procedure
 Clean_map = zeros(1, N_scanpoints); Degraded_CSM = conj(CSM); Dirty_map = sum(conj(h).*(Degraded_CSM*h), 1);
-Cabs = sum(abs(Degraded_CSM(:))); Dcurr = Cabs; count = 0; Dprev = 1e8;
+Dcurr = sum(abs(Degraded_CSM(:))); count = 0; Dprev = 1e8;
 
 while ( Dcurr < Dprev ) && (count < maxIter)
     
     % Determine peak source
-    [Pmax, index_max] = max(abs(Dirty_map)); 
-    PmaxCleanBeam = zeros(size(Clean_map)); PmaxCleanBeam(index_max) = 1;
+    [Map_max, index_max] = max(abs(Dirty_map)); 
+    Map_maxCleanBeam = zeros(size(Clean_map)); Map_maxCleanBeam(index_max) = 1;
     ispositiv = real(Dirty_map(index_max)) > 0;  % Delete negative pressure maps
-    gmax = Degraded_CSM*h(:,index_max)/Pmax;
+    gmax = Degraded_CSM*h(:,index_max)/Map_max;
     
     % Update degraded CSM 
-    Cource = Pmax*(gmax)*gmax';
+    Cource = Map_max*(gmax)*gmax';
     Degraded_CSM = Degraded_CSM - loopgain*Cource;
     
     % Update dirty map 
     Dirty_map = sum(conj(h).*(Degraded_CSM*h), 1);
 
     % Update clean map 
-    Clean_map = Clean_map + loopgain*Pmax* PmaxCleanBeam * ispositiv;
+    Clean_map = Clean_map + loopgain*Map_max*Map_maxCleanBeam*ispositiv;
 
     Dprev = Dcurr; Dcurr = sum(abs(Degraded_CSM(:)));
     count = count + 1;
+
+end
+
+
+% Delete negative power
+Dirty_map(real(Dirty_map)<0) = 0;
+
+% Final beamforming map equal to the sum of clean map and dirty map
+CLEAN_SC_result = Clean_map + Dirty_map;
+CLEAN_SC_result = reshape(CLEAN_SC_result, N_X, N_Y).';
 
 end
 
