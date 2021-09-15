@@ -42,7 +42,10 @@ hold on; plot(source(:,1),source(:,2),'r*')
 
 %% CLEAN-PSF
 loopgain = 0.9; maxIter = 100;
-CLEAN_SC_result = CLEAN_SC(loopgain, maxIter, CSM, hn);
+CLEAN_PSF_result = CLEAN_PSF(loopgain, maxIter, CSM, hn);
+
+figure; contourf(real(CLEAN_PSF_result)); title('CLEAN-PSF')
+hold on; plot(source(:,1),source(:,2),'r*')
 
 %% CLEAN-SC
 loopgain = 0.9; maxIter = 100;
