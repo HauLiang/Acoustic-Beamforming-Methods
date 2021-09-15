@@ -69,13 +69,3 @@ CLEAN_SC_result = Clean_map + Dirty_map;
 CLEAN_SC_result = reshape(CLEAN_SC_result, N_X, N_Y).';
 
 end
-
-
-% Delete negative power
-Dirty_map(real(Dirty_map)<0) = 0;
-
-% Final beamforming map equal to the sum of clean map and dirty map
-CLEAN_SC_result = Clean_map + Dirty_map;
-CLEAN_SC_result = reshape(CLEAN_SC_result, N_X, N_Y).';
-
-end
