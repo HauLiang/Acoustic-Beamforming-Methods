@@ -35,7 +35,7 @@ end
 % Scan points setting  
 N_scanpoints = N_X*N_Y;
 
-% Start CLEAN SC procedure
+% Start CLEAN-SC procedure
 Clean_map = zeros(1, N_scanpoints); Degraded_CSM = conj(CSM); Dirty_map = sum(conj(h).*(Degraded_CSM*h), 1);
 Cabs = sum(abs(Degraded_CSM(:))); Dcurr = Cabs; count = 0; Dprev = 1e8;
 
