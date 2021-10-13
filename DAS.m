@@ -85,16 +85,14 @@ gn = zeros(N,N,N_mic);
 d0 = sqrt(X.^2 + Y.^2 + z0^2);    % |d0|: Distance from (0,0,0) to all mesh points
 for n = 1:N_mic
     dj(:,:,n) = sqrt((X-rn(n,1)).^2+(Y-rn(n,2)).^2 + z0^2);
-    hn(:,:,n) = (dj(:,:,n)./d0).*exp(1j*omega.*dj(:,:,n)./c);
-    gn(:,:,n) = (d0./dj(:,:,n)).*exp(1j*omega.*dj(:,:,n)./c)+10^(-SNR/10)*(rand(N,N)+1j*rand(N,N));
+    hn(:,:,n) = (dj(:,:,n)./d0).*exp(-1j*omega.*dj(:,:,n)./c);
+    gn(:,:,n) = (d0./dj(:,:,n)).*exp(-1j*omega.*dj(:,:,n)./c)+10^(-SNR/10)*(rand(N,N)+1j*rand(N,N));
 end
 
 % Create CSM
-q = zeros(N,N);
 CSM = zeros(N_mic,N_mic);
 
 for k = 1:size(source,1)
-    q(source(k,2),source(k,1)) = 1;
     CSM = CSM + squeeze(gn(source(k,2),source(k,1),:))*squeeze(gn(source(k,2),source(k,1),:))';
 end
 
