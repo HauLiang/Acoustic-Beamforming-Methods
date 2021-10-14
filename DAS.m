@@ -55,8 +55,8 @@ d0 = sqrt(Xp.^2 + Yp.^2 + z0^2);
 % Distance dj from each microphone to each grid point
 for n = 1:N_mic
     dj(:,:,n) = sqrt((Xp-rn(n,1)).^2+(Yp-rn(n,2)).^2 + z0^2);
-    hn(:,:,n) = (dj(:,:,n)./d0).*exp(1j*omega.*dj(:,:,n)./c);
-    gn(:,:,n) = (d0./dj(:,:,n)).*exp(1j*omega.*dj(:,:,n)./c);
+    hn(:,:,n) = (dj(:,:,n)./d0).*exp(-1j*omega.*dj(:,:,n)./c);
+    gn(:,:,n) = (d0./dj(:,:,n)).*exp(-1j*omega.*dj(:,:,n)./c);
 end
 
 % Point spread function (PSF)
