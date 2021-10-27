@@ -77,6 +77,7 @@ if N ~= Np
 end
 
 % Cross spectral matrix (CSM)
+% 
 dj = zeros(N,N,N_mic);
 hn = zeros(N,N,N_mic);
 gn = zeros(N,N,N_mic);
@@ -89,7 +90,7 @@ for n = 1:N_mic
     gn(:,:,n) = (d0./dj(:,:,n)).*exp(-1j*omega.*dj(:,:,n)./c)+10^(-SNR/10)*(rand(N,N)+1j*rand(N,N));
 end
 
-% Simulated CSM
+% Skip the sound source generation, and directly simulate CSM
 CSM = zeros(N_mic,N_mic);
 
 for k = 1:size(source,1)
