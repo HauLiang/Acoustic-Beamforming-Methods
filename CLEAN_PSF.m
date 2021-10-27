@@ -23,19 +23,14 @@ function CLEAN_PSF_result = CLEAN_PSF(loopgain, maxIter, CSM, hn)
 
 
 % Straighten the steering vector
-[N_X, N_Y, N_mic] = size(hn); hn_temp = hn;
-h = zeros(N_mic, N_X*N_Y);
-for i = 1:N_mic
-    hn_temp(:,:,i) = flip(hn_temp(:,:,i),1);
-    hn_temp(:,:,i) = flip(hn_temp(:,:,i),2);
-    h(i,:) = reshape(hn_temp(:,:,i).',1,[])./N_mic;
-end
+[N_X, N_Y, N_mic] = size(hn); 
+h = reshape(hn,[], N_mic).'./N_mic;
 
 % Scan points setting 
 N_scanpoints = N_X*N_Y;
 
 % Start CLEAN-PSF procedure
-Clean_map = zeros(1, N_scanpoints); Degraded_CSM = CSM; Dirty_map = sum(h.*(CSM*conj(h)), 1);
+Clean_map = zeros(1, N_scanpoints); Degraded_CSM = CSM; Dirty_map = sum(conj(h).*(Degraded_CSM*h), 1);
 Dcurr = sum(abs(Degraded_CSM(:))); count = 0; Dprev = 1e8;
  
 while ( Dprev > Dcurr ) && (count < maxIter)
@@ -49,10 +44,10 @@ while ( Dprev > Dcurr ) && (count < maxIter)
     hmax = h(:, index_max);
     
     % Update degraded CSM
-    Degraded_CSM = Degraded_CSM - loopgain*Map_max*conj(hmax)*hmax.';
+    Degraded_CSM = Degraded_CSM - loopgain*Map_max*(hmax*hmax');
     
     % Update dirty map 
-    Dirty_map = sum(h.*(Degraded_CSM*conj(h)), 1);
+    Dirty_map = sum(conj(h).*(Degraded_CSM*h), 1);
     
     % Update clean map
     Clean_map = Clean_map + loopgain*Map_max*PmaxCleanBeam*ispositiv;
@@ -68,6 +63,6 @@ Dirty_map(real(Dirty_map)<0) = 0;
 
 % Final beamforming map equal to the sum of clean map and dirty map
 CLEAN_PSF_result = Clean_map + Dirty_map;
-CLEAN_PSF_result = reshape(CLEAN_PSF_result, N_X, N_Y).';
+CLEAN_PSF_result = reshape(CLEAN_PSF_result, N_X, N_Y);
 
 end

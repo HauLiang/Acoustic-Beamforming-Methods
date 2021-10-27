@@ -23,18 +23,13 @@ function CLEAN_SC_result = CLEAN_SC(loopgain, maxIter, CSM, hn)
 
 % Straighten the steering vector
 [N_X, N_Y, N_mic] = size(hn);
-h = zeros(N_mic, N_X*N_Y);
-for i = 1:N_mic
-    hn(:,:,i) = flip(hn(:,:,i),1);
-    hn(:,:,i) = flip(hn(:,:,i),2);
-    h(i,:) = reshape(hn(:,:,i).',1,[])./N_mic;
-end
+h = reshape(hn,[], N_mic).'./N_mic;
 
 % Scan points setting         
 N_scanpoints = N_X*N_Y;
 
 % Start CLEAN-SC procedure
-Clean_map = zeros(1, N_scanpoints); Degraded_CSM = conj(CSM); Dirty_map = sum(conj(h).*(Degraded_CSM*h), 1);
+Clean_map = zeros(1, N_scanpoints); Degraded_CSM = CSM; Dirty_map = sum(conj(h).*(Degraded_CSM*h), 1);
 Dcurr = sum(abs(Degraded_CSM(:))); count = 0; Dprev = 1e8;
 
 while ( Dcurr < Dprev ) && (count < maxIter)
@@ -67,6 +62,6 @@ Dirty_map(real(Dirty_map)<0) = 0;
 
 % Final beamforming map equal to the sum of clean map and dirty map
 CLEAN_SC_result = Clean_map + Dirty_map;
-CLEAN_SC_result = reshape(CLEAN_SC_result, N_X, N_Y).';
+CLEAN_SC_result = reshape(CLEAN_SC_result, N_X, N_Y);
 
 end
