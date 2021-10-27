@@ -14,7 +14,7 @@
 % -- https://github.com/Anwar-M/Acoustic-Beamforming
 %
 % Author: Hao Liang 
-% Last modified by: 21/09/15
+% Last modified by: 21/10/27
 %
 
 %% Experiment setup
@@ -24,7 +24,7 @@ rn = array;  % spatial location of microphones
 N = 50;      % number of grid points in each dim
 z0 = 5;      % source distance 
 phi = 15;    % off-axis angle 
-f = 1500;    % sampling frequency 
+f = 1500;    % imaging frequency 
 SNR = 15;    % signal-to-noise ratio (SNR)
 source = int64([N/4 N/4]);    % x,y position of sources
 

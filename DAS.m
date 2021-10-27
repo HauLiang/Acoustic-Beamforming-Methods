@@ -11,7 +11,7 @@ function [DAS_result, PSF, hn, CSM] = DAS(N,z0,f,phi,rn,source,SNR)
 % Inputs:
 %    N:  number of grid points in each dim 
 %    z0: source distance
-%    f:  sampling frequency
+%    f:  imaging frequency
 %    rn: coordinates of the microphone array
 %    source: x,y position of sources
 %    SNR:  signal-to-noise ratio
