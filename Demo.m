@@ -27,6 +27,7 @@ phi = 15;    % off-axis angle
 f = 1500;    % imaging frequency 
 SNR = 15;    % signal-to-noise ratio (SNR)
 source = int64([N/4 N/4]);    % x,y position of sources
+% source = int64([N/4 N/4;N/4 N*3/4]);  % Two sources example
 
 %% DAS
 [DAS_result, PSF, hn, CSM] = DAS(N,z0,f,phi,rn,source,SNR);
