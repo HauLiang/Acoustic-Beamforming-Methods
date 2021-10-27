@@ -1,6 +1,6 @@
 function [DAS_result, PSF, hn, CSM] = DAS(N,z0,f,phi,rn,source,SNR)
 %
-% This code implements the DAS algorithm
+% This code implements the delay-and-sum (DAS) algorithm
 %
 % More information about DAS can be found in the paper:
 %    Van Veen, Barry D and Buckley, Kevin M, 
@@ -89,14 +89,14 @@ for n = 1:N_mic
     gn(:,:,n) = (d0./dj(:,:,n)).*exp(-1j*omega.*dj(:,:,n)./c)+10^(-SNR/10)*(rand(N,N)+1j*rand(N,N));
 end
 
-% Create CSM
+% Simulated CSM
 CSM = zeros(N_mic,N_mic);
 
 for k = 1:size(source,1)
     CSM = CSM + squeeze(gn(source(k,2),source(k,1),:))*squeeze(gn(source(k,2),source(k,1),:))';
 end
 
-% Diagonal removal technique
+% Diagonal removal (DR) technique
 CSM(logical(eye(size(CSM)))) = 0;
 
 % DAS imaging
