@@ -26,7 +26,7 @@ deps = 0.1;
 % Form the dictionary A
 [N_X, N_Y, N_mic] = size(hn);
 en = reshape(hn, N_X*N_Y, N_mic);
-A = (abs(en*en').^2)./N_mic^2;
+A = (abs(conj(en)*(1./en)').^2)./N_mic^2;
 
 % Initialization
 Q = zeros(size(temp)); Q0 = temp;
