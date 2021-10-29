@@ -27,6 +27,9 @@ deps = 0.1;
 [N_X, N_Y, N_mic] = size(hn);
 en = reshape(hn, N_X*N_Y, N_mic);
 A = (abs(conj(en)*(1./en)').^2)./N_mic^2;
+% This is different from the definition of A in https://github.com/jorgengrythe/beamforming (as follow), 
+% and I think it may have some minor mistakes... 
+% A = (abs(en*en').^2)./N_mic^2; 
 
 % Initialization
 Q = zeros(size(temp)); Q0 = temp;
