@@ -18,7 +18,7 @@ function CLEAN_PSF_result = CLEAN_PSF(loopgain, maxIter, CSM, hn)
 %    CLEAN_PSF_result:  beamforming map, obtained by CLEAN-PSF
 %
 % Author: Hao Liang 
-% Last modified by: 21/09/15
+% Last modified by: 21/10/31
 %
 
 
@@ -41,10 +41,10 @@ while ( Dprev > Dcurr ) && (count < maxIter)
     ispositiv = real(Dirty_map(index_max)) > 0;  % Delete negative pressure maps
     
     % Steering vector according to maximum point
-    hmax = h(:, index_max);
+    gmax = conj(1./h(:, index_max));
     
     % Update degraded CSM
-    Degraded_CSM = Degraded_CSM - loopgain*Map_max*(hmax*hmax');
+    Degraded_CSM = Degraded_CSM - loopgain*Map_max*(gmax*gmax');
     
     % Update dirty map 
     Dirty_map = sum(conj(h).*(Degraded_CSM*h), 1);
