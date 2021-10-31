@@ -41,7 +41,7 @@ while ( Dprev > Dcurr ) && (count < maxIter)
     ispositiv = real(Dirty_map(index_max)) > 0;  % Delete negative pressure maps
     
     % Steering vector according to maximum point
-    gmax = conj(1./h(:, index_max));
+    gmax = conj(1./h(:, index_max))*N_mic;
     
     % Update degraded CSM
     Degraded_CSM = Degraded_CSM - loopgain*Map_max*(gmax*gmax');
