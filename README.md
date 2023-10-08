@@ -16,7 +16,7 @@ A simple demo for acoustic imaging, including the following methods:
 > [Ehrenfried, Klaus and Koop, Lars, "Comparison of iterative deconvolution algorithms for the mapping of acoustic sources", *AIAA journal*, 2007.](https://arc.aiaa.org/doi/abs/10.2514/1.26320?journalCode=aiaaj "https://arc.aiaa.org/doi/abs/10.2514/1.26320?journalCode=aiaaj")
 * ...
 
-If you want to know more about acoustic imaging, please refer to the following paper:
+If you want to know more about acoustic imaging, please refer to the following papers:
 
 * Fundamentals of acoustic beamforming:
 > [de Santana, Leandro, "Fundamentals of Acoustic Beamforming", *Design and Operation of Aeroacoustic Wind Tunnel Tests for Group and Air Transport*, 2017.](https://www.sto.nato.int/publications/STO%20Educational%20Notes/STO-EN-AVT-287/EN-AVT-287-04.pdf "https://www.sto.nato.int/publications/STO%20Educational%20Notes/STO-EN-AVT-287/EN-AVT-287-04.pdf")
