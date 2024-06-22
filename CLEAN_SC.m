@@ -12,7 +12,7 @@ function CLEAN_SC_result = CLEAN_SC(loopgain, maxIter, CSM, hn)
 %    loopgain:  loop gain
 %    maxIter:   the maximum allowable iterations
 %    CSM:  cross-spectrum matrix (CSM)
-%    hn:   weighted steering vector
+%    hn:   steering vector
 %
 % Outputs:
 %    CLEAN_SC_result:  beamforming map, obtained by CLEAN-SC
