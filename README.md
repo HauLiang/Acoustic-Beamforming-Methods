@@ -1,6 +1,6 @@
 # Acoustic-Beamforming-Methods
 A simple demo for acoustic imaging, including the following methods:
-> The latest scan-frequency version can be found at https://github.com/HauLiang/Acoustic-Beamforming-Advanced.
+> Note that this is a preliminary version. The latest scan-frequency version can be found at https://github.com/HauLiang/Acoustic-Beamforming-Advanced.
 
 * DAS: <br>
 > [Van Veen, Barry D and Buckley, Kevin M, "Beamforming: A versatile approach to spatial filtering", *IEEE assp magazine*, 1988.](https://ieeexplore.ieee.org/abstract/document/665/ "https://ieeexplore.ieee.org/abstract/document/665/")
