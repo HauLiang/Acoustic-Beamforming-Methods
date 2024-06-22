@@ -10,7 +10,7 @@ function MUSIC_result = MUSIC(CSM, hn, nSources)
 %
 % Inputs:
 %    CSM:  cross-spectrum matrix (CSM)
-%    hn:   weighted steering vector
+%    hn:   steering vector
 %    nSources:   number of sources
 %
 % Outputs:
