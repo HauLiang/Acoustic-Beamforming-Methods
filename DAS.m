@@ -19,7 +19,7 @@ function [DAS_result, PSF, hn, CSM] = DAS(N,z0,f,phi,rn,source,SNR)
 % Outputs:
 %    DAS_result:  beamforming map, obtained by DAS
 %    PSF:  point spread function (PSF)
-%    hn:   steering vector
+%    hn:   weighted steering vector
 %    CSM: cross-spectrum matrix (CSM)
 %
 % Author: Hao Liang 
