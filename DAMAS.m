@@ -10,7 +10,7 @@ function DAMAS_result = DAMAS(DAS_result, hn, maxIter)
 %
 % Inputs:
 %    DAS_result:  beamforming map, obtained by DAS
-%    hn:  steering vector
+%    hn:  weighted steering vector
 %    maxIter: the maximum allowable iterations
 %
 % Outputs:
